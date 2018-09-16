@@ -1,0 +1,121 @@
+spring:
+  datasource: 
+    name: db
+#   type: org.apache.commons.dbcp.BasicDataSource
+    url: jdbc:mysql://127.0.0.1/metka?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&useSSL=false 
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    minIdle: 1
+    maxActive: 2
+    maxWait: 60000
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /first_mq
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      concurrency: 5
+      max-concurrency: 10
+      prefetch: 1
+      transaction-size: 1
+  cache:
+    cache-names: hallo
+    -: halo
+mybatis:   
+  type-aliases-package: com.metka.entity
+  mapper-locations: classpath*:com/metka/mapper/conf/**.xml
+  base-package: com.metka.mapper
+  configLocation: classpath:mybatis-config.xml
+  
+################################ 在控制器显示sql日志 ########################
+logging:
+  level:
+    com:
+      metka:
+        mapper: debug
+
+################################ rabbitmq ########################
+# logging.level.com.dy.springboot.server.mapper=debug
+#spring.rabbitmq.listener.concurrency=5
+#spring.rabbitmq.listener.max-concurrency=10
+#spring.rabbitmq.listener.prefetch=1
+#spring.rabbitmq.listener.transaction-size=1
+# 
+############################ queue 配置 ##########################
+# 
+#mq.env=test
+#
+#register.exchange.name=${mq.env}.user.register.exchange
+#register.delay.queue.name=${mq.env}.user.register.delay.queue
+# 
+#register.delay.exchange.name=${mq.env}.user.register.delay.exchange
+#register.queue.name=${mq.env}.user.register.queue
+ 
+ 
+#交易记录失效时间：10s
+#trade.record.ttl=10000
+
+
+#spring.rabbitmq.host=192.168.0.86
+#spring.rabbitmq.port=5672
+#spring.rabbitmq.username=admin
+#spring.rabbitmq.password=123456
+
+  
+#
+#redis:
+#  host: 192.168.10.109
+#  port: 6379
+#  maxIdle: 1000
+#  maxTotal: 1000
+#  testOnBorrow: true
+#  dataBase: 0
+#  
+#logging: 
+#  config: classpath:logback-spring.xml
+#  path: ../../logs/
+#  
+#server: 
+#  port: 10088
+#  
+#debug: true
+#
+#flyway: 
+#  baseline-on-migrate: true
+#
+#
+#  
+#sms:
+#  sendFlag: true
+#  account: cyfw@xmzpsc
+#  password: htXx7W8k
+#
+#oms: 
+#  confimReceiptUrl: http://192.168.10.109:40085/http/OrderInterface/alterOrderInfo.jhtml
+#  closeOrderUrl: http://192.168.10.109:40085/http/OrderInterface/doCloseOrder.jhtml
+#  sendOrderInfoToOms: http://192.168.10.109:40085/http/OrderInterface/createCbtOrder.jhtml
+#
+#wms: 
+#  finsSubOrderUrl: http://java.wms.test.yipicha.com/subOrder/findSubOrderInfo
+#
+#cis:
+#  stockDealUrl: http://192.168.10.109:10088/inventory/BranchInventory/updateStockByHttp2.jhtml
+#  findBranchStockUrl: http://192.168.10.109:10088/ot/http/queryStock/findStock.jhtml?interfaceNo=cbs
+#
+#imgpath:
+#  zpDomain: //static.zuipin.cn
+#  zpThumbnail230x184: /media/catalog/product/cache/1/thumbnail/230x184/9df78eab33525d08d6e5fb8d27136e95/
+#  zpThumbnail78x65: /media/catalog/product/cache/1/thumbnail/78x65/9df78eab33525d08d6e5fb8d27136e95/
+#  zpRawImage: /media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/
+#  
+#ipAddress: 120.42.7.96
+#
+#rocketmq:
+#  namesrvAddr: 192.168.10.114:9876;192.168.10.115:9876
+#  userName: _1993test
