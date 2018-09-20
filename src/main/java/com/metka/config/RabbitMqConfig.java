@@ -24,7 +24,7 @@ import java.util.Map;
 @Configuration
 public class RabbitMqConfig {
  
-    private final static Logger log = LoggerFactory.getLogger("mqLog");
+    private final static Logger log = LoggerFactory.getLogger(RabbitMqConfig.class);
  
     @Autowired
     private Environment env;
