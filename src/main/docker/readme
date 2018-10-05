@@ -1,0 +1,3 @@
+docker exec -it sick_hawking bash
+
+clean package docker:build -DskipTests

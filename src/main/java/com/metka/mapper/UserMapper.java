@@ -2,8 +2,11 @@ package com.metka.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.metka.entity.User;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 

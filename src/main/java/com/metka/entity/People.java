@@ -1,9 +1,8 @@
 package com.metka.entity;
 
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
 public class People {
+	
+	private User user;
 	
 	private int age;
 	private String name;
@@ -23,6 +22,13 @@ public class People {
 	public String toString() {
 		return "People [age=" + age + ", name=" + name + "]";
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	
 	
 }

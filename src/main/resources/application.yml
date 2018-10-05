@@ -1,21 +1,19 @@
 spring:
   datasource: 
     name: db
-#   type: org.apache.commons.dbcp.BasicDataSource
-    url: jdbc:mysql://127.0.0.1/metka?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&useSSL=false 
+    url: jdbc:mysql://192.168.1.5/metka?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&useSSL=false 
     username: root
     password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
-    minIdle: 1
-    maxActive: 2
-    maxWait: 60000
+    driverClassName: com.mysql.jdbc.Driver
+
+    
     ################################ RabbitMQ ########################
   rabbitmq:
-    host: 127.0.0.1
+    host: 192.168.1.5
     port: 5672
-    username: admin
-    password: admin
-    virtual-host: /first_mq
+    username: guest
+    password: guest
+    virtual-host: /
     publisher-confirms: true
     publisher-returns: true
     template:
@@ -25,10 +23,14 @@ spring:
       max-concurrency: 10
       prefetch: 1
       transaction-size: 1
-  cache:
-    cache-names: hallo
-    -: halo
     
+redis:
+  host: 192.168.1.5
+  port: 6379
+  maxIdle: 1000
+  maxTotal: 1000
+  testOnBorrow: true
+  dataBase: 0
     ################################定时任务 ########################
 #  quartz:
 #    #相关属性配置
@@ -52,6 +54,8 @@ spring:
 #            threadsInheritContextClassLoaderOfInitializingThread: true
 #    #数据库方式
 #    job-store-type: jdbc
+
+
 mybatis:   
   type-aliases-package: com.metka.entity
   mapper-locations: classpath*:com/metka/mapper/conf/**.xml
@@ -59,14 +63,9 @@ mybatis:
   configLocation: classpath:mybatis-config.xml
   
 ################################ 在控制器显示sql日志 ########################
-logging:
-  level:
-    com:
-      metka:
-        mapper: debug
-        
 
-  
+
+      
 
 
 ################################ rabbitmq ########################
@@ -98,13 +97,7 @@ logging:
 
   
 #
-#redis:
-#  host: 192.168.10.109
-#  port: 6379
-#  maxIdle: 1000
-#  maxTotal: 1000
-#  testOnBorrow: true
-#  dataBase: 0
+
 #  
 #logging: 
 #  config: classpath:logback-spring.xml

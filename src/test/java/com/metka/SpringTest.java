@@ -14,6 +14,7 @@ import com.metka.demo.Person;
 import com.metka.entity.People;
 import com.metka.event.PushOrderRecordEvent;
 import com.metka.service.impl.TestService;
+import com.metka.util.ConcurrencyTestUtil;
 import com.metka.util.SpringUtil;
 
 @RunWith(SpringRunner.class)
@@ -28,7 +29,7 @@ public class SpringTest {
 	
 	@Test
 	public void test() {
-		PushOrderRecordEvent event=new PushOrderRecordEvent(this,"124455411");
-		applicationEventPublisher.publishEvent(event);
+		ConcurrencyTestUtil c=ConcurrencyTestUtil.getInstance();
+		c.startConcurrencyTest("http://127.0.0.1:8080/test?id=1", 10);
 	}
 }

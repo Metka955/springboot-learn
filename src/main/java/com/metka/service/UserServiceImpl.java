@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService {
 	UserMapper userMapper;
 	
 	@Override
-	@Cacheable(key="#{username}")
 	public List<User> findByName(String username) {
 		// TODO Auto-generated method stub
 		System.out.println("从数据库查找数据");
@@ -27,10 +26,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	@Cacheable(cacheNames="hallo")
 	public User selectByPrimaryKey(Integer id) {
 		
-		System.out.println("从数据库查找数据");
+		System.out.println("从数据库查找数据"+Thread.currentThread().getName());
 		// TODO Auto-generated method stub
 		return userMapper.selectByPrimaryKey(id);
 	}
