@@ -1,36 +1,36 @@
 spring:
   datasource: 
     name: db
-    url: jdbc:mysql://192.168.1.5/metka?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&useSSL=false 
+    url: jdbc:mysql://127.0.0.1/metka?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&useSSL=false 
     username: root
     password: 123456
     driverClassName: com.mysql.jdbc.Driver
 
-    
+   
     ################################ RabbitMQ ########################
-  rabbitmq:
-    host: 192.168.1.5
-    port: 5672
-    username: guest
-    password: guest
-    virtual-host: /
-    publisher-confirms: true
-    publisher-returns: true
-    template:
-      mandatory: true
-    listener:
-      concurrency: 5
-      max-concurrency: 10
-      prefetch: 1
-      transaction-size: 1
+#  rabbitmq:
+#    host: 192.168.1.5
+#    port: 5672
+#    username: guest
+#    password: guest
+#    virtual-host: /
+#    publisher-confirms: true
+#    publisher-returns: true
+#    template:
+#      mandatory: true
+#    listener:
+#      concurrency: 5
+#      max-concurrency: 10
+#      prefetch: 1
+#      transaction-size: 1
     
-redis:
-  host: 192.168.1.5
-  port: 6379
-  maxIdle: 1000
-  maxTotal: 1000
-  testOnBorrow: true
-  dataBase: 0
+#redis:
+#  host: 192.168.1.5
+#  port: 6379
+#  maxIdle: 1000
+#  maxTotal: 1000
+#  testOnBorrow: true
+#  dataBase: 0
     ################################定时任务 ########################
 #  quartz:
 #    #相关属性配置
